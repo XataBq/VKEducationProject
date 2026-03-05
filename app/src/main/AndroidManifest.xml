@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstAndroidApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".FirstActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.FirstAndroidApp">
@@ -21,6 +21,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:theme="@style/Theme.FirstAndroidApp">
         </activity>
     </application>
 
