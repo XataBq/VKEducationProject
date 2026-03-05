@@ -3,7 +3,6 @@ package com.example.firstandroidapp.ui.first
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
 
 class FirstViewModel: ViewModel() {
