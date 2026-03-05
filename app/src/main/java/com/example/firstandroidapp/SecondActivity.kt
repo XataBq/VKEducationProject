@@ -16,12 +16,9 @@ class SecondActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FirstAndroidAppTheme {
-                Scaffold(modifier = Modifier.Companion.fillMaxSize()) { innerPadding ->
-                    SecondScreen(
-                        innerPadding = innerPadding,
-                        stringData = intent.getStringExtra(EXTRA_TEXT).orEmpty()
-                    )
-                }
+                SecondScreen(
+                    stringData = intent.getStringExtra(EXTRA_TEXT).orEmpty()
+                )
             }
         }
     }
