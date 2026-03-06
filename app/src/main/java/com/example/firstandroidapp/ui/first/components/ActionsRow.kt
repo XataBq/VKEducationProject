@@ -16,13 +16,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.firstandroidapp.R
 
 @Composable
 fun ActionsRow(
     navigateSecondActivity: () -> Unit,
     shareData: () -> Unit,
-    callNumber: () -> Unit,
+    phoneCall: () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -37,7 +39,7 @@ fun ActionsRow(
             shape = RoundedCornerShape(12.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            Text(text = "Second activity")
+            Text(text = stringResource(R.string.second_activity))
         }
         FilledIconButton(
             onClick = shareData,
@@ -46,17 +48,17 @@ fun ActionsRow(
         ) {
             Icon(
                 Icons.Default.Share,
-                contentDescription = "Share text field"
+                contentDescription = stringResource(R.string.content_description_share)
             )
         }
         FilledIconButton(
-            onClick = callNumber,
+            onClick = phoneCall,
             modifier = Modifier.size(48.dp),
             shape = RoundedCornerShape(14.dp),
         ) {
             Icon(
                 Icons.Default.Call,
-                contentDescription = "Call number"
+                contentDescription = stringResource(R.string.content_description_call)
             )
         }
     }

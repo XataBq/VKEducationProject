@@ -11,7 +11,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.firstandroidapp.R
 
 @Composable
 fun CustomTextField(
@@ -24,7 +26,7 @@ fun CustomTextField(
         onValueChange = { newValue -> onValueChanged(newValue) },
         label = {
             Text(
-                text = "Type here..."
+                text = stringResource(R.string.text_field_label)
             )
         },
         singleLine = true,
@@ -38,7 +40,7 @@ fun CustomTextField(
             ) {
                 Icon(
                     Icons.Default.Clear,
-                    contentDescription = "Clear text field"
+                    contentDescription = stringResource(R.string.content_description_clear)
                 )
             }
         }
