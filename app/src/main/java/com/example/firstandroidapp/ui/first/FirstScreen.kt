@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_DIAL
 import android.content.Intent.ACTION_SEND
+import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +17,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,7 +39,7 @@ fun FirstScreen(
     ) {
     val focusManager = LocalFocusManager.current
     val context = LocalContext.current
-    val snackbarHostState = SnackbarHostState()
+    val snackbarHostState = remember {SnackbarHostState()}
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
@@ -108,7 +110,7 @@ fun navigateSecondActivity(context: Context, data: String) {
 }
 
 fun phoneCall(context: Context, phoneNumber: String) {
-    val intent = Intent(ACTION_DIAL, "tel:$phoneNumber".toUri())
+    val intent = Intent(ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null))
 
     intent.resolveActivity(context.packageManager)?.let {
         context.startActivity(intent)
