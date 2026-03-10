@@ -39,7 +39,7 @@ fun FirstScreen(
     ) {
     val focusManager = LocalFocusManager.current
     val context = LocalContext.current
-    val snackbarHostState = remember {SnackbarHostState()}
+    val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
@@ -122,7 +122,5 @@ fun shareText(context: Context, textData: String) {
         .putExtra(Intent.EXTRA_TEXT, textData.ifBlank { "Empty text" })
         .setType("text/plain")
 
-    intent.resolveActivity(context.packageManager)?.let {
-        context.startActivity(Intent.createChooser(intent, "Share text"))
-    }
+    context.startActivity(Intent.createChooser(intent, "Share text"))
 }
