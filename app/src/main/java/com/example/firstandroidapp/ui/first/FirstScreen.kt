@@ -119,7 +119,7 @@ fun phoneCall(context: Context, phoneNumber: String) {
 
 fun shareText(context: Context, textData: String) {
     val intent = Intent(ACTION_SEND)
-        .putExtra(Intent.EXTRA_TEXT, textData)
+        .putExtra(Intent.EXTRA_TEXT, textData.ifBlank { "Empty text" })
         .setType("text/plain")
 
     intent.resolveActivity(context.packageManager)?.let {

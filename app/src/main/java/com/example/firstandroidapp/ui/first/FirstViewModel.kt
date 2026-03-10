@@ -29,15 +29,12 @@ class FirstViewModel: ViewModel() {
     fun clearTextField() {
         text = ""
     }
-
     //Отправка события
     private fun sendEvent(event: UiEvent){
         viewModelScope.launch {
             _events.emit(event)
         }
     }
-
-
     //Валидация номера и отправка события по решению валидации
     fun onCallClick () {
         if (!phoneNumberValidation(this.text)) {
