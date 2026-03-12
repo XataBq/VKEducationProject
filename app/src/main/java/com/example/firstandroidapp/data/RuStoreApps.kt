@@ -30,7 +30,7 @@ val apps = listOf(
         name = "Яндекс Навигатор",
         category = Category.MAPS,
         iconUri = "https://static.rustore.ru/imgproxy/P0Em8fwcZIhhOo3WQzCBmTlyT2Q9Xw1FJtx0nEwuEoU/preset:web_app_icon_62/plain/https://static.rustore.ru/apk/595135/content/ICON/32cb5e63-9c59-4280-9a6a-c808113be88f.png@webp",
-        description = "парковки и заправки по пути"
+        description = "Парковки и заправки по пути"
     ),
     AppShortDetails(
         id = "5",
@@ -64,8 +64,8 @@ val apps = listOf(
         id = "9",
         name = "Газпромбанк",
         category = Category.FINANCE,
-        iconUri = "",
-        description = "https://static.rustore.ru/imgproxy/NmE_UyxplejCP2ACbDyV10m2c8m_d2K3HU0rfc0lHIo/preset:web_app_icon_62/plain/https://static.rustore.ru/apk/811199/content/ICON/b75f0527-1296-45d0-9735-a2f30de0e17d.png@webp"
+        iconUri = "https://static.rustore.ru/imgproxy/NmE_UyxplejCP2ACbDyV10m2c8m_d2K3HU0rfc0lHIo/preset:web_app_icon_62/plain/https://static.rustore.ru/apk/811199/content/ICON/b75f0527-1296-45d0-9735-a2f30de0e17d.png@webp",
+        description = "Все банковские сервисыу вас"
     ),
     AppShortDetails(
         id = "10",
