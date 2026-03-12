@@ -37,12 +37,7 @@ fun AppListHeader() {
             .padding(top = 48.dp, bottom = 32.dp, start = 24.dp, end = 24.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-//        AsyncImage(
-//            model = "https://www.rustore.ru/help/logo.png",
-//            contentDescription = "RuStore",
-//            modifier = Modifier.height(32.dp),
-//            contentScale = ContentScale.Fit
-//        )
+
         Image(
             painter = painterResource(R.drawable.logo),
             contentDescription = "Menu",
