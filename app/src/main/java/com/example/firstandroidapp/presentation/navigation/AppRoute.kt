@@ -1,7 +1,5 @@
 package com.example.firstandroidapp.presentation.navigation
 
-import android.net.Uri
-
 sealed class Screen(
     val route: String
 ) {

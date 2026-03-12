@@ -33,6 +33,7 @@ fun AppNavigation() {
 //            Now don't need, but later may be useful
 //            arguments = listOf(navArgument("id") { type = NavType.StringType })
         ) {
+            //Detailed app screen is everywhere the same yet
             AppDetailsScreen(
                 modifier = Modifier.fillMaxSize().safeDrawingPadding(),
                 onBackClick = {
