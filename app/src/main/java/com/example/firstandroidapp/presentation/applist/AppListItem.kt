@@ -1,5 +1,6 @@
 package com.example.firstandroidapp.presentation.applist
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,12 +27,14 @@ import com.example.firstandroidapp.domain.applist.AppShortDetails
 @Composable
 fun AppListItem(
     app: AppShortDetails,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navigateAppDetails: () -> Unit
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 12.dp),
+            .padding(horizontal = 24.dp, vertical = 12.dp)
+            .clickable{ navigateAppDetails() },
         verticalAlignment = Alignment.CenterVertically
     ) {
 

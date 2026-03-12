@@ -21,7 +21,9 @@ import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.data.apps
 
 @Composable
-fun AppListScreen() {
+fun AppListScreen(
+    navigateAppDetails: () -> Unit
+) {
         Box(modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.primary)
@@ -39,7 +41,10 @@ fun AppListScreen() {
                 ) {
                     LazyColumn {
                         items(apps) { app ->
-                            AppListItem(app)
+                            AppListItem(
+                                app = app,
+                                navigateAppDetails = { navigateAppDetails() }
+                            )
                             HorizontalDivider(
                                 modifier = Modifier.padding(start = 96.dp),
                                 color = Color.LightGray

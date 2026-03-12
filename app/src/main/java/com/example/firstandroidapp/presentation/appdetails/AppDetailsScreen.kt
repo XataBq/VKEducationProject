@@ -27,6 +27,7 @@ import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 @Composable
 fun AppDetailsScreen(
     modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
 ) {
     val app = remember { getApp() }
 
@@ -38,7 +39,7 @@ fun AppDetailsScreen(
     Column(modifier) {
         Toolbar(
             onBackClick = {
-                // TODO: Открыть предыдущий экран через Jetpack Navigation
+                onBackClick()
                 Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
             },
             onShareClick = {
@@ -117,6 +118,7 @@ private fun Preview() {
     FirstAndroidAppTheme() {
         AppDetailsScreen(
             modifier = Modifier.fillMaxSize(),
+            onBackClick = {}
         )
     }
 }
