@@ -22,7 +22,7 @@ fun AppNavigation() {
             AppListScreen(
                 navigateAppDetails = {
                     navController.navigate(Screen.AppDetails.route){
-                        launchSingleTop
+                        launchSingleTop = true
                     }
                 }
             )
@@ -40,7 +40,7 @@ fun AppNavigation() {
                     //Чтобы не было blank screen
                     if (!navController.popBackStack()){
                         navController.navigate(Screen.ListOfApps.route) {
-                            launchSingleTop
+                            launchSingleTop = true
                         }
                     }
                 }
