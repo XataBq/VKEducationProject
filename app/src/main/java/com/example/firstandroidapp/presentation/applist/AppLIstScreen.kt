@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -19,9 +21,10 @@ import com.example.firstandroidapp.data.apps
 
 @Composable
 fun AppListScreen(
-    navigateAppDetails: () -> Unit
+    onAppClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-        Box(modifier = Modifier
+        Box(modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.primary)
         ) {
@@ -40,7 +43,7 @@ fun AppListScreen(
                         items(apps) { app ->
                             AppListItem(
                                 app = app,
-                                navigateAppDetails = { navigateAppDetails() }
+                                onClick = onAppClick
                             )
                             HorizontalDivider(
                                 modifier = Modifier.padding(start = 96.dp),

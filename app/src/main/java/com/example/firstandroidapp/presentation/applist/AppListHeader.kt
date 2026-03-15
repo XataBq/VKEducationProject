@@ -22,9 +22,11 @@ import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.R
 
 @Composable
-fun AppListHeader() {
+fun AppListHeader(
+    modifier: Modifier = Modifier
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(128.dp)
             .padding(top = 48.dp, bottom = 32.dp, start = 24.dp, end = 24.dp),

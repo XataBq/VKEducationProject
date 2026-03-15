@@ -27,14 +27,14 @@ import com.example.firstandroidapp.domain.applist.AppShortDetails
 @Composable
 fun AppListItem(
     app: AppShortDetails,
-    modifier: Modifier = Modifier,
-    navigateAppDetails: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 12.dp)
-            .clickable{ navigateAppDetails() },
+            .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically
     ) {
 

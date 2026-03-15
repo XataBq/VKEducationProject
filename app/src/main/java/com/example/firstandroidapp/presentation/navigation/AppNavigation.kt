@@ -11,16 +11,19 @@ import com.example.firstandroidapp.presentation.appdetails.AppDetailsScreen
 import com.example.firstandroidapp.presentation.applist.AppListScreen
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(
+    modifier: Modifier = Modifier
+) {
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = Screen.ListOfApps.route
+        startDestination = Screen.ListOfApps.route,
+        modifier = modifier
     ) {
         composable(Screen.ListOfApps.route) {
             AppListScreen(
-                navigateAppDetails = {
+                onAppClick = {
                     navController.navigate(Screen.AppDetails.route){
                         launchSingleTop = true
                     }
