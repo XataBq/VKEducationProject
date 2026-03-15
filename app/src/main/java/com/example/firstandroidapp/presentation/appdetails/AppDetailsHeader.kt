@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.firstandroidapp.R
+import com.example.firstandroidapp.domain.appdetails.AppDetails
 import com.example.firstandroidapp.domain.appdetails.Category
 import com.example.firstandroidapp.domain.appdetails.serialName
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
@@ -31,7 +32,7 @@ import kotlin.math.roundToInt
 
 @Composable
 fun AppDetailsHeader(
-    app: App,
+    app: AppDetails,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -90,7 +91,7 @@ fun AppDetailsHeader(
 @Preview
 @Composable
 private fun Preview() {
-    val app = App(
+    val app = AppDetails(
         name = "Гильдия Героев: Экшен ММО РПГ",
         developer = "VK Play",
         category = Category.GAME,

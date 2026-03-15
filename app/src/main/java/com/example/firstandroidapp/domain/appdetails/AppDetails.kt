@@ -1,9 +1,6 @@
-package com.example.firstandroidapp.presentation.appdetails
+package com.example.firstandroidapp.domain.appdetails
 
-import com.example.firstandroidapp.domain.appdetails.Category
-
-
-data class App(
+data class AppDetails(
     val name: String,
     val developer: String,
     val category: Category,

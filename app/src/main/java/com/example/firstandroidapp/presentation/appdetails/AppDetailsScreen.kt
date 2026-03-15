@@ -21,13 +21,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.R
+import com.example.firstandroidapp.domain.appdetails.AppDetails
 import com.example.firstandroidapp.domain.appdetails.Category
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 
 @Composable
 fun AppDetailsScreen(
-    modifier: Modifier = Modifier,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val app = remember { getApp() }
 
@@ -95,7 +96,7 @@ fun AppDetailsScreen(
 }
 
 // В будущем заменим этот метод на вызов API.
-private fun getApp(): App = App(
+private fun getApp(): AppDetails = AppDetails(
     name = "Гильдия Героев: Экшен ММО РПГ",
     developer = "VK Play",
     category = Category.GAME,

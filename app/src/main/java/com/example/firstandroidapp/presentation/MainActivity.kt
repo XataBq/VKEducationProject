@@ -1,4 +1,4 @@
-package com.example.firstandroidapp
+package com.example.firstandroidapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
