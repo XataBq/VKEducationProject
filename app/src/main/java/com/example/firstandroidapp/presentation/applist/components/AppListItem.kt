@@ -33,8 +33,8 @@ fun AppListItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 12.dp)
-            .clickable(onClick = onClick),
+            .clickable(onClick = onClick)
+            .padding(horizontal = 24.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 

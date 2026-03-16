@@ -9,7 +9,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.firstandroidapp.presentation.appdetails.AppDetailsScreen
 import com.example.firstandroidapp.presentation.applist.AppListRoute
-import com.example.firstandroidapp.presentation.applist.AppListScreen
 
 @Composable
 fun AppNavigation(
