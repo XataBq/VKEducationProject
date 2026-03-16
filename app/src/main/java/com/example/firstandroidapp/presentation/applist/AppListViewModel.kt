@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstandroidapp.R
 import com.example.firstandroidapp.data.apps
+import com.example.firstandroidapp.domain.applist.AppShortDetails
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,9 +29,14 @@ class AppListViewModel : ViewModel() {
 
     fun loadApps() {
         viewModelScope.launch {
-            _uiState.value = AppListUiState.Loading
-            delay(2000L)
-            _uiState.value = AppListUiState.Success(apps)
+            runCatching{
+                _uiState.value = AppListUiState.Loading
+                delay(2000L)
+                val listOfApps = getApps()
+                _uiState.value = AppListUiState.Success(listOfApps)
+            }.onFailure {e ->
+                _uiState.value = AppListUiState.Error(e)
+            }
         }
     }
 
@@ -42,6 +48,10 @@ class AppListViewModel : ViewModel() {
                 )
             )
         }
+    }
+
+    private fun getApps(): List<AppShortDetails> {
+        return apps
     }
 
 }

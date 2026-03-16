@@ -16,11 +16,14 @@
 
     <string name="app_details_developer">Разработчик</string>
 
-    <string name="under_developement">В процессе разработки</string>
-
     <string name="logo_ru_store">Рустор</string>
     <string name="app_list_menu">Меню магазина приложений</string>
     <string name="error_unknown">Неизвестная ошибка</string>
     <string name="app_list_retry_loading">Повторить</string>
     <string name="logo_click_message">RuStore лучший магазин приложений!</string>
+
+    <string name="under_development">В процессе разработки</string>
+
+    <string name="app_details_error">Произошла непредвиденная ошибка</string>
+    <string name="app_details_error_refresh">Перезагрузить</string>
 </resources>
