@@ -12,12 +12,17 @@ import com.example.firstandroidapp.presentation.applist.content.AppListScreenSuc
 @Composable
 fun AppListScreen(
     uiState: AppListUiState,
+    snackbarHostState: SnackbarHostState,
+    onLogoClick: () -> Unit,
     onAppClick: () -> Unit,
     onRetryClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     //Общий layout для состояний
-    AppListScreenLayout() {
+    AppListScreenLayout(
+        snackbarHostState = snackbarHostState,
+        onLogoClick = onLogoClick
+    ) {
         when (uiState) {
             AppListUiState.Loading -> {
                 AppListScreenLoading()

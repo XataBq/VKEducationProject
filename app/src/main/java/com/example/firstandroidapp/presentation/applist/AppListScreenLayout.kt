@@ -20,6 +20,8 @@ import com.example.firstandroidapp.presentation.applist.components.AppListHeader
 
 @Composable
 fun AppListScreenLayout(
+    snackbarHostState: SnackbarHostState,
+    onLogoClick: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {
@@ -32,7 +34,7 @@ fun AppListScreenLayout(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            AppListHeader()
+            AppListHeader(onLogoClick = onLogoClick)
 
             Surface(
                 modifier = Modifier.fillMaxSize(),
@@ -42,5 +44,13 @@ fun AppListScreenLayout(
                 content()
             }
         }
+
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .navigationBarsPadding(),
+        )
     }
 }

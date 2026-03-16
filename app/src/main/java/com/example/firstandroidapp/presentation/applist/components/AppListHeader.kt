@@ -1,6 +1,7 @@
 package com.example.firstandroidapp.presentation.applist.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +25,7 @@ import com.example.firstandroidapp.R
 
 @Composable
 fun AppListHeader(
+    onLogoClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -37,7 +39,10 @@ fun AppListHeader(
         Image(
             painter = painterResource(R.drawable.logo),
             contentDescription = stringResource(R.string.logo_ru_store),
-            modifier = Modifier.width(150.dp).height(48.dp),
+            modifier = Modifier
+                .width(150.dp)
+                .height(48.dp)
+                .clickable{ onLogoClick() },
             contentScale = ContentScale.Fit
         )
         Spacer(modifier = Modifier.weight(1F))

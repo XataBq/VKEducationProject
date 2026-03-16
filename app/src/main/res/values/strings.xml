@@ -22,4 +22,5 @@
     <string name="app_list_menu">Меню магазина приложений</string>
     <string name="error_unknown">Неизвестная ошибка</string>
     <string name="app_list_retry_loading">Повторить</string>
+    <string name="logo_click_message">RuStore лучший магазин приложений!</string>
 </resources>
