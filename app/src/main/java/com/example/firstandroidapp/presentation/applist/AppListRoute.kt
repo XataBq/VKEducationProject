@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun AppListRoute(
-    onAppClick: () -> Unit,
+    onAppClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: AppListViewModel = viewModel()
 ) {

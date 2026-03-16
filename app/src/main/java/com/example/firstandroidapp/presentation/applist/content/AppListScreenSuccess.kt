@@ -15,7 +15,7 @@ import com.example.firstandroidapp.presentation.applist.components.AppListItem
 @Composable
 fun AppListScreenSuccess(
     appList: List<AppShortDetails>,
-    onAppClick: () -> Unit,
+    onAppClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(

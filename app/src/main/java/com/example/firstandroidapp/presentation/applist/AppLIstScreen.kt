@@ -14,7 +14,7 @@ fun AppListScreen(
     uiState: AppListUiState,
     snackbarHostState: SnackbarHostState,
     onLogoClick: () -> Unit,
-    onAppClick: () -> Unit,
+    onAppClick: (String) -> Unit,
     onRetryClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
