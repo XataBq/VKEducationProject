@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.R
 
@@ -35,7 +36,7 @@ fun AppListHeader(
 
         Image(
             painter = painterResource(R.drawable.logo),
-            contentDescription = "Menu",
+            contentDescription = stringResource(R.string.logo_ru_store),
             modifier = Modifier.width(150.dp).height(48.dp),
             contentScale = ContentScale.Fit
         )
@@ -52,7 +53,7 @@ fun AppListHeader(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_menu),
-                contentDescription = "Menu"
+                contentDescription = stringResource(R.string.app_list_menu)
             )
         }
     }

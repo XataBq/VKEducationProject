@@ -3,6 +3,8 @@ package com.example.firstandroidapp.presentation.applist
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.firstandroidapp.R
 import com.example.firstandroidapp.presentation.applist.content.AppListScreenError
 import com.example.firstandroidapp.presentation.applist.content.AppListScreenLoading
 import com.example.firstandroidapp.presentation.applist.content.AppListScreenSuccess
@@ -30,7 +32,7 @@ fun AppListScreen(
 
             is AppListUiState.Error -> {
                 AppListScreenError(
-                    message = uiState.e.message ?: "Some error occured",
+                    message = uiState.e.message ?: stringResource(R.string.error_unknown),
                     onRetryClick = onRetryClick
                 )
             }

@@ -11,7 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.firstandroidapp.R
 
 //AppListScreen content on loading
 @Composable
@@ -30,7 +32,7 @@ fun AppListScreenError(
         Text(text = message)
         Spacer(modifier = Modifier.height(12.dp))
         Button(onClick = onRetryClick) {
-            Text("Повторить")
+            Text(stringResource(R.string.app_list_retry_loading))
         }
     }
 }
