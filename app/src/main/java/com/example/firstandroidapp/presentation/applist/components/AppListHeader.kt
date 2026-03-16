@@ -1,4 +1,4 @@
-package com.example.firstandroidapp.presentation.applist
+package com.example.firstandroidapp.presentation.applist.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
