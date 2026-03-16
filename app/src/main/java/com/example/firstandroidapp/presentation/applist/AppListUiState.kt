@@ -6,5 +6,9 @@ import java.lang.Exception
 sealed interface AppListUiState {
     data object Loading: AppListUiState
     data class Error(val e: Throwable): AppListUiState
-    data class Success(val apps: List<AppShortDetails>): AppListUiState
+    data class Success(
+        val apps: List<AppShortDetails> = emptyList(),
+        val endReached: Boolean = false,
+        val isLoadingMore: Boolean = false
+    ): AppListUiState
 }

@@ -1,5 +1,8 @@
 package com.example.firstandroidapp.domain.applist
 
 interface AppListRepository {
-    suspend fun get(): List<AppShortDetails>
+    suspend fun get(
+        page: Int,
+        pageSize: Int,
+    ): List<AppShortDetails>
 }

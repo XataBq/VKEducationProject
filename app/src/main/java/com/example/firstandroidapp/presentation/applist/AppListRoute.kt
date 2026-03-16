@@ -45,6 +45,7 @@ fun AppListRoute(
         snackbarHostState = snackbarHostState,
         onLogoClick = { viewModel.onLogoClick()},
         onAppClick = onAppClick,
+        onLoadMore = viewModel::loadNextPage,
         onRetryClick = viewModel::loadApps,
         modifier = modifier
     )
