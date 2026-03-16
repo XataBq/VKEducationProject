@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.R
 import com.example.firstandroidapp.domain.appdetails.AppDetails
-import com.example.firstandroidapp.domain.appdetails.Category
+import com.example.firstandroidapp.domain.Category
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 
 @Composable
@@ -97,6 +97,7 @@ fun AppDetailsScreen(
 
 // В будущем заменим этот метод на вызов API.
 private fun getApp(): AppDetails = AppDetails(
+    id = "dkkaj-12902-allsdw-pyobz",
     name = "Гильдия Героев: Экшен ММО РПГ",
     developer = "VK Play",
     category = Category.GAME,
