@@ -3,10 +3,6 @@ package com.example.firstandroidapp.presentation.appdetails
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firstandroidapp.data.appdetails.AppDetailsApi
-import com.example.firstandroidapp.data.appdetails.AppDetailsMapper
-import com.example.firstandroidapp.data.appdetails.AppDetailsMockRepositoryImpl
-import com.example.firstandroidapp.data.mapper.CategoryMapper
 import com.example.firstandroidapp.domain.appdetails.AppDetailsRepository
 import com.example.firstandroidapp.presentation.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel

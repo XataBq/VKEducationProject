@@ -3,10 +3,6 @@ package com.example.firstandroidapp.presentation.applist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstandroidapp.R
-import com.example.firstandroidapp.data.applist.AppListApi
-import com.example.firstandroidapp.data.applist.AppListMockRepositoryImpl
-import com.example.firstandroidapp.data.applist.AppShortDetailsMapper
-import com.example.firstandroidapp.data.mapper.CategoryMapper
 import com.example.firstandroidapp.domain.applist.AppListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

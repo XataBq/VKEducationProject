@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.firstandroidapp.presentation.appdetails.AppDetailsScreen
+import com.example.firstandroidapp.presentation.appdetails.AppDetailsRoute
 import com.example.firstandroidapp.presentation.applist.AppListRoute
 
 @Composable
@@ -37,7 +37,7 @@ fun AppNavigation(
             Screen.AppDetails.route,
             arguments = listOf(navArgument(Screen.AppDetails.APP_ID) { type = NavType.StringType })
         ) {
-            AppDetailsScreen(
+            AppDetailsRoute(
                 modifier = Modifier
                     .fillMaxSize()
                     .safeDrawingPadding(),

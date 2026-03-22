@@ -10,25 +10,22 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.firstandroidapp.R
 import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun AppDetailsScreen(
+    state: AppDetailsState,
+    events: Flow<AppDetailsEvent>,
     onBackClick: () -> Unit,
-    modifier: Modifier = Modifier
+    getAppDetails: () -> Unit,
+    showUnderDevelopmentMessage: () -> Unit,
+    collapseDescription: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    val viewModel = hiltViewModel<AppDetailsViewModel>()
-    val state by viewModel.state.collectAsState()
-    val events = viewModel.events
-
     val snackbarHostState = remember { SnackbarHostState() }
 
     ObserveEvents(
@@ -54,7 +51,7 @@ fun AppDetailsScreen(
 
             is AppDetailsState.Error -> {
                 AppDetailsError(
-                    onRefreshClick = { viewModel.getAppDetails() },
+                    onRefreshClick = { getAppDetails() },
                     modifier = Modifier
                         .fillMaxSize()
                         .safeDrawingPadding()
@@ -67,16 +64,16 @@ fun AppDetailsScreen(
                     content = currentState,
                     onBackClick = onBackClick,
                     onShareClick = {
-                        viewModel.showUnderDevelopmentMessage()
+                        showUnderDevelopmentMessage()
                     },
                     onInstallClick = {
-                        viewModel.showUnderDevelopmentMessage()
+                        showUnderDevelopmentMessage()
                     },
                     onReadMoreClick = {
-                        viewModel.collapseDescription()
+                        collapseDescription()
                     },
                     onDeveloperClick = {
-                        viewModel.showUnderDevelopmentMessage()
+                        showUnderDevelopmentMessage()
                     },
                     modifier = Modifier
                         .fillMaxSize()
