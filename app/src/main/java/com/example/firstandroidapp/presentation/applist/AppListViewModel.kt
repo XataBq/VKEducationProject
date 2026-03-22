@@ -62,8 +62,8 @@ class AppListViewModel @Inject constructor(
         if (state !is AppListUiState.Success) return
         if (state.isLoadingMore || state.endReached) return
 
+        _uiState.value = state.copy(isLoadingMore = true)
         viewModelScope.launch {
-            _uiState.value = state.copy(isLoadingMore = true)
 
             runCatching {
                 appListRepository.get(

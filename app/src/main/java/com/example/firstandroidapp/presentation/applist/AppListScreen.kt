@@ -33,6 +33,7 @@ fun AppListScreen(
                 AppListScreenSuccess(
                     appList = uiState.apps,
                     isLoadingMore = uiState.isLoadingMore,
+                    endReached = uiState.endReached,
                     onAppClick = onAppClick,
                     onLoadMore = onLoadMore,
                 )
