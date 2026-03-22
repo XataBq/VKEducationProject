@@ -2,8 +2,9 @@ package com.example.firstandroidapp.data.applist
 
 import com.example.firstandroidapp.data.appsDto
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class AppListApi {
+class AppListApi @Inject constructor(){
 
     suspend fun get(
         page: Int,

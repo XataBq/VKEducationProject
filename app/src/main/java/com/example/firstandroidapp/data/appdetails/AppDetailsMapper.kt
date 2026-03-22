@@ -2,8 +2,9 @@ package com.example.firstandroidapp.data.appdetails
 
 import com.example.firstandroidapp.data.mapper.CategoryMapper
 import com.example.firstandroidapp.domain.appdetails.AppDetails
+import javax.inject.Inject
 
-class AppDetailsMapper(
+class AppDetailsMapper @Inject constructor(
     private val categoryMapper: CategoryMapper
 ){
     fun map(dto: AppDetailsDto): AppDetails {
