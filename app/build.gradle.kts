@@ -40,6 +40,16 @@ android {
 }
 
 dependencies {
+    //Мне retrofit
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.moshi)
+    //okhttp
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    //moshi
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.ksp)
     //timber
     implementation(libs.timber)
     // Hilt DI (Dependency Injection) + интеграция с Compose + KSP компилятор
