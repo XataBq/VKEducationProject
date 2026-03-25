@@ -2,95 +2,49 @@ package com.example.firstandroidapp.domain
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.io.Serial
 
 @Serializable
-enum class Category {
-    @SerialName("Приложения")
-    APP,
+enum class Category(
+    val title: String,
+    val aliases: Set<String>
+) {
+    APP("Приложения", setOf("приложения", "app", "apps")),
+    GAME("Игры", setOf("игры", "game", "games")),
+    PRODUCTIVITY("Производительность", setOf("производительность", "productivity")),
+    SOCIAL("Социальные сети", setOf("социальные сети", "social")),
+    EDUCATION("Образование", setOf("образование", "education")),
+    ENTERTAINMENT("Развлечения", setOf("развлечения", "entertainment")),
+    MUSIC("Музыка", setOf("музыка", "music")),
+    HEALTH("Здоровье", setOf("здоровье", "health")),
+    SPORTS("Спорт", setOf("спорт", "sports")),
+    NEWS("Новости", setOf("новости", "news")),
+    BOOKS("Книги", setOf("книги", "books")),
+    BUSINESS("Бизнес", setOf("бизнес", "business")),
+    FINANCE("Финансы", setOf("финансы", "finance")),
+    TRAVEL("Путешествия", setOf("путешествия", "travel")),
+    MAPS("Карты", setOf("карты", "maps")),
+    SHOPPING("Покупки", setOf("покупки", "shopping")),
+    UTILITIES("Утилиты", setOf("утилиты", "utilities")),
+    INSTRUMENTS("Инструменты", setOf("инструменты", "tools", "instruments")),
+    VIDEO_PHOTOGRAPHY("Фото и видео", setOf("фото и видео", "photo and video", "photo", "video")),
+    HEALTH_FITNESS(
+        "Здоровье и фитнес",
+        setOf("здоровье и фитнес", "health and fitness", "fitness")
+    ),
+    FOOD_DRINK("Еда и напитки", setOf("еда и напитки", "food and drink", "food", "drink")),
+    LIFE_STYLE("Образ жизни", setOf("образ жизни", "lifestyle", "life style")),
+    WEATHER("Погода", setOf("погода", "weather")),
+    COMMUNICATION("Общение", setOf("общение", "communication", "chat", "messaging")),
+    NAVIGATION("Навигация", setOf("навигация", "navigation"));
 
-    @SerialName("Игры")
-    GAME,
+    companion object {
+        fun fromString(value: String): Category {
+            val normalized = value.trim().lowercase()
 
-    @SerialName("Производительность")
-    PRODUCTIVITY,
-
-    @SerialName("Социальные сети")
-    SOCIAL,
-
-    @SerialName("Образование")
-    EDUCATION,
-
-    @SerialName("Развлечения")
-    ENTERTAINMENT,
-
-    @SerialName("Музыка")
-    MUSIC,
-
-    @SerialName("Видео")
-    VIDEO,
-
-    @SerialName("Фотография")
-    PHOTOGRAPHY,
-
-    @SerialName("Здоровье")
-    HEALTH,
-
-    @SerialName("Спорт")
-    SPORTS,
-
-    @SerialName("Новости")
-    NEWS,
-
-    @SerialName("Книги")
-    BOOKS,
-
-    @SerialName("Бизнес")
-    BUSINESS,
-
-    @SerialName("Финансы")
-    FINANCE,
-
-    @SerialName("Путешествия")
-    TRAVEL,
-
-    @SerialName("Карты")
-    MAPS,
-
-    @SerialName("Еда")
-    FOOD,
-
-    @SerialName("Покупки")
-    SHOPPING,
-
-    @SerialName("Утилиты")
-    UTILITIES,
-
-    @SerialName("Инструменты")
-    INSTRUMENTS,
-}
-
-fun Category.serialName(): String {
-    return when (this) {
-        Category.APP -> "Приложения"
-        Category.GAME -> "Игры"
-        Category.PRODUCTIVITY -> "Производительность"
-        Category.SOCIAL -> "Социальные сети"
-        Category.EDUCATION -> "Образование"
-        Category.ENTERTAINMENT -> "Развлечения"
-        Category.MUSIC -> "Музыка"
-        Category.VIDEO -> "Видео"
-        Category.PHOTOGRAPHY -> "Фотография"
-        Category.HEALTH -> "Здоровье"
-        Category.SPORTS -> "Спорт"
-        Category.NEWS -> "Новости"
-        Category.BOOKS -> "Книги"
-        Category.BUSINESS -> "Бизнес"
-        Category.FINANCE -> "Финансы"
-        Category.TRAVEL -> "Путешествия"
-        Category.MAPS -> "Карты"
-        Category.FOOD -> "Еда"
-        Category.SHOPPING -> "Покупки"
-        Category.UTILITIES -> "Утилиты"
-        Category.INSTRUMENTS -> "Инструменты"
+            return entries.firstOrNull { category ->
+                normalized == category.title.lowercase() || normalized in category.aliases
+            } ?: APP
+        }
     }
 }

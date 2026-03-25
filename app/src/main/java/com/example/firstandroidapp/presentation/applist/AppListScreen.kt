@@ -1,5 +1,6 @@
 package com.example.firstandroidapp.presentation.applist
 
+import android.content.Context
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,12 +13,11 @@ import com.example.firstandroidapp.presentation.applist.content.AppListScreenSuc
 @Composable
 fun AppListScreen(
     uiState: AppListUiState,
+    context: Context,
     snackbarHostState: SnackbarHostState,
     onLogoClick: () -> Unit,
     onAppClick: (String) -> Unit,
-    onLoadMore: () -> Unit,
     onRetryClick: () -> Unit,
-    modifier: Modifier = Modifier
 ) {
     //Общий layout для состояний
     AppListScreenLayout(
@@ -32,16 +32,13 @@ fun AppListScreen(
             is AppListUiState.Success -> {
                 AppListScreenSuccess(
                     appList = uiState.apps,
-                    isLoadingMore = uiState.isLoadingMore,
-                    endReached = uiState.endReached,
                     onAppClick = onAppClick,
-                    onLoadMore = onLoadMore,
                 )
             }
 
             is AppListUiState.Error -> {
                 AppListScreenError(
-                    message = uiState.e.message ?: stringResource(R.string.error_unknown),
+                    message = uiState.message.asString(context),
                     onRetryClick = onRetryClick
                 )
             }

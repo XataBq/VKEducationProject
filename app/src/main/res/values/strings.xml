@@ -18,12 +18,34 @@
 
     <string name="logo_ru_store">Рустор</string>
     <string name="app_list_menu">Меню магазина приложений</string>
-    <string name="error_unknown">Неизвестная ошибка</string>
-    <string name="app_list_retry_loading">Повторить</string>
+    <string name="retry_loading">Повторить</string>
     <string name="logo_click_message">RuStore лучший магазин приложений!</string>
 
     <string name="under_development">В процессе разработки</string>
 
-    <string name="app_details_error">Произошла непредвиденная ошибка</string>
-    <string name="app_details_error_refresh">Перезагрузить</string>
+    <!-- Общие ошибки -->
+    <string name="error_unknown">Что-то пошло не так</string>
+    <string name="error_generic">Ошибка</string>
+
+    <!-- Сеть -->
+    <string name="error_network">Проверь подключение к интернету</string>
+    <string name="error_timeout">Сервер не отвечает. Попробуйте позже</string>
+
+    <!-- HTTP / сервер -->
+    <string name="error_server">Ошибка сервера. Попробуйте позже</string>
+    <string name="error_not_found">Данные не найдены</string>
+    <string name="error_unauthorized">Требуется повторный вход</string>
+    <string name="error_forbidden">Нет доступа к этому ресурсу</string>
+
+    <!-- Данные -->
+    <string name="error_empty">Нет данных для отображения</string>
+    <string name="error_parse">Ошибка обработки данных</string>
+
+    <!-- Retry / действия -->
+    <string name="action_retry">Повторить</string>
+    <string name="action_reload">Обновить</string>
+
+    <!-- Конкретно под список приложений -->
+    <string name="error_apps_load">Не удалось загрузить список приложений</string>
+    <string name="empty_apps">Список приложений пуст</string>
 </resources>
