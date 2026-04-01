@@ -10,6 +10,6 @@ data class AppDetails(
     val ageRating: Int,
     val size: Float,
     val iconUrl: String,
-    val screenshotUrlList: List<String>,
+    val screenshotUrlList: List<String>?,
     val description: String,
 )
