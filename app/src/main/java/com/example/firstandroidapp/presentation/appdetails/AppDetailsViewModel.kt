@@ -62,8 +62,6 @@ class AppDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             runCatching {
                 repository.refreshAppDetails(appId)
-            }.onFailure {
-                _state.value = AppDetailsState.Error
             }
         }
     }
