@@ -24,6 +24,7 @@ fun AppDetailsScreen(
     getAppDetails: () -> Unit,
     showUnderDevelopmentMessage: () -> Unit,
     collapseDescription: () -> Unit,
+    toggleWishList: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -75,6 +76,7 @@ fun AppDetailsScreen(
                     onDeveloperClick = {
                         showUnderDevelopmentMessage()
                     },
+                    onFavoriteClick = toggleWishList,
                     modifier = Modifier
                         .fillMaxSize()
                         .safeDrawingPadding()

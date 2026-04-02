@@ -22,6 +22,7 @@ fun AppDetailsRoute(
         getAppDetails = viewModel::getAppDetails,
         showUnderDevelopmentMessage = viewModel::showUnderDevelopmentMessage,
         collapseDescription = viewModel::collapseDescription,
+        toggleWishList = viewModel::toggleWishlist,
         modifier = modifier,
     )
 }
