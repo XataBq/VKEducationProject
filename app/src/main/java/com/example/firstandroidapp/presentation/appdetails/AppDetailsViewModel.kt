@@ -78,4 +78,10 @@ class AppDetailsViewModel @Inject constructor(
             }
         }
     }
+
+    fun toggleWishlist() {
+        viewModelScope.launch {
+            repository.toggleWishlist(appId)
+        }
+    }
 }

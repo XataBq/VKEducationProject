@@ -11,13 +11,18 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.firstandroidapp.R
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 
 @Composable
 internal fun Toolbar(
+    isInWishlist: Boolean,
     onBackClick: () -> Unit,
     onShareClick: () -> Unit,
+    onFavoriteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -32,12 +37,26 @@ internal fun Toolbar(
                 tint = MaterialTheme.colorScheme.primary,
             )
         }
-        IconButton(onClick = onShareClick) {
-            Icon(
-                imageVector = Icons.Default.Share,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-            )
+        Row{
+            IconButton(onClick = onFavoriteClick) {
+                val iconRes = when (isInWishlist) {
+                    true -> R.drawable.favorite_true
+                    false -> R.drawable.favorite_false
+                }
+                val tint = if (isInWishlist) Color.Red else MaterialTheme.colorScheme.primary
+                Icon(
+                    painter = painterResource(iconRes),
+                    contentDescription = null,
+                    tint = tint,
+                )
+            }
+            IconButton(onClick = onShareClick) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+            }
         }
     }
 }
@@ -47,8 +66,10 @@ internal fun Toolbar(
 private fun Preview() {
     FirstAndroidAppTheme {
         Toolbar(
+            isInWishlist = false,
             onBackClick = {},
             onShareClick = {},
+            onFavoriteClick = {}
         )
     }
 }
