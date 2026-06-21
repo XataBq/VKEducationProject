@@ -24,30 +24,11 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 @Composable
 fun AppListScreenSuccess(
     appList: List<AppShortDetails>,
-    isLoadingMore: Boolean,
-    endReached: Boolean,
     onAppClick: (String) -> Unit,
-    onLoadMore: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val listState = rememberSaveable(saver = LazyListState.Saver) {
         LazyListState()
-    }
-
-    LaunchedEffect(listState, appList.size, isLoadingMore, endReached) {
-        snapshotFlow {
-            listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
-        }
-            .distinctUntilChanged()
-            .collect { lastVisibleIndex ->
-                if (lastVisibleIndex == null) return@collect
-                if (isLoadingMore || endReached) return@collect
-
-                val shouldLoadMore = lastVisibleIndex >= appList.lastIndex - 2
-                if (shouldLoadMore) {
-                    onLoadMore()
-                }
-            }
     }
 
     LazyColumn(
@@ -65,19 +46,6 @@ fun AppListScreenSuccess(
                 modifier = Modifier.padding(start = 96.dp),
                 color = Color.LightGray
             )
-        }
-
-        if (isLoadingMore) {
-            item(key = "loading_more") {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
-                }
-            }
         }
     }
 }

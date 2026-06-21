@@ -26,7 +26,6 @@ import coil3.compose.AsyncImage
 import com.example.firstandroidapp.R
 import com.example.firstandroidapp.domain.appdetails.AppDetails
 import com.example.firstandroidapp.domain.Category
-import com.example.firstandroidapp.domain.serialName
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 import kotlin.math.roundToInt
 
@@ -50,7 +49,7 @@ fun AppDetailsHeader(
         Spacer(Modifier.width(16.dp))
         Column {
             Text(
-                text = appDetails.category.serialName(),
+                text = appDetails.category.title,
                 color = MaterialTheme.colorScheme.secondary,
                 fontSize = 12.sp,
             )

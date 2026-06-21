@@ -29,14 +29,14 @@ fun AppDetailsError(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = stringResource(R.string.app_details_error),
+            text = stringResource(R.string.error_unknown),
             fontStyle = MaterialTheme.typography.headlineMedium.fontStyle,
         )
         Spacer(Modifier.height(12.dp))
         Button(
             onClick = onRefreshClick,
         ) {
-            Text(text = stringResource(R.string.app_details_error_refresh))
+            Text(text = stringResource(R.string.retry_loading))
         }
     }
 }

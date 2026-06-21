@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppListRoute(
     onAppClick: (String) -> Unit,
-    modifier: Modifier = Modifier,
     viewModel: AppListViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -43,11 +42,10 @@ fun AppListRoute(
 
     AppListScreen(
         uiState = uiState,
+        context = context,
         snackbarHostState = snackbarHostState,
         onLogoClick = { viewModel.onLogoClick()},
         onAppClick = onAppClick,
-        onLoadMore = viewModel::loadNextPage,
         onRetryClick = viewModel::loadApps,
-        modifier = modifier
     )
 }

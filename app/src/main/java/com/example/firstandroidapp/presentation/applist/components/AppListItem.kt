@@ -21,7 +21,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.firstandroidapp.domain.serialName
 import com.example.firstandroidapp.domain.applist.AppShortDetails
 
 @Composable
@@ -72,7 +71,7 @@ fun AppListItem(
             Spacer(Modifier.height(2.dp))
 
             Text(
-                text = app.category.serialName(),
+                text = app.category.title,
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.Gray
             )

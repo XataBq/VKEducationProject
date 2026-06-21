@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstandroidapp.R
 import com.example.firstandroidapp.domain.applist.AppListRepository
+import com.example.firstandroidapp.domain.util.DataResult
+import com.example.firstandroidapp.presentation.extensions.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,67 +28,24 @@ class AppListViewModel @Inject constructor(
     )
     val events = _uiEvents.asSharedFlow()
 
-    private companion object {
-        const val PAGE_SIZE: Int = 10
-    }
-
-    private var currentPage = 0
-
     init {
         loadApps()
     }
 
     fun loadApps() {
+        _uiState.value = AppListUiState.Loading
         viewModelScope.launch {
-            _uiState.value = AppListUiState.Loading
-            runCatching {
-                appListRepository.get(
-                    page = 0,
-                    pageSize = PAGE_SIZE,
-                )
-            }.onSuccess { apps ->
-                currentPage = 1
-                _uiState.value = AppListUiState.Success(
-                    apps = apps,
-                    isLoadingMore = false,
-                    endReached = apps.size < PAGE_SIZE
-                )
-            }.onFailure { e ->
-                _uiState.value = AppListUiState.Error(e)
-            }
-        }
-    }
-
-    fun loadNextPage() {
-        val state = _uiState.value
-        if (state !is AppListUiState.Success) return
-        if (state.isLoadingMore || state.endReached) return
-
-        _uiState.value = state.copy(isLoadingMore = true)
-        viewModelScope.launch {
-
-            runCatching {
-                appListRepository.get(
-                    page = currentPage,
-                    pageSize = PAGE_SIZE
-                )
-            }.onSuccess { newApps ->
-                val updateState = (_uiState.value as? AppListUiState.Success) ?: return@onSuccess
-
-                _uiState.value = updateState.copy(
-                    apps = updateState.apps + newApps,
-                    isLoadingMore = false,
-                    endReached = newApps.size < PAGE_SIZE
-                )
-
-                if (newApps.isNotEmpty()) {
-                    currentPage++
+            when(val result = appListRepository.get()) {
+                is DataResult.Success -> {
+                    _uiState.value = AppListUiState.Success(apps = result.data)
                 }
-            }.onFailure {
-                val updatedState = (_uiState.value as? AppListUiState.Success) ?: return@onFailure
-
-                _uiState.value = updatedState.copy(isLoadingMore = false)
+                is DataResult.Error -> {
+                    _uiState.value = AppListUiState.Error(
+                        message = result.error.toUiText()
+                    )
+                }
             }
+
         }
     }
 

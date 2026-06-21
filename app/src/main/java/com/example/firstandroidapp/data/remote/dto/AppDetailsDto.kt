@@ -1,5 +1,4 @@
-package com.example.firstandroidapp.data.appdetails
-
+package com.example.firstandroidapp.data.remote.dto
 
 data class AppDetailsDto (
     val id: String,

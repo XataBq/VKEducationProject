@@ -1,7 +1,7 @@
 package com.example.firstandroidapp.data.di
 
-import com.example.firstandroidapp.data.appdetails.AppDetailsMockRepositoryImpl
-import com.example.firstandroidapp.data.applist.AppListMockRepositoryImpl
+import com.example.firstandroidapp.data.repository.AppDetailsRepositoryImpl
+import com.example.firstandroidapp.data.repository.AppListRepositoryImpl
 import com.example.firstandroidapp.domain.appdetails.AppDetailsRepository
 import com.example.firstandroidapp.domain.applist.AppListRepository
 import dagger.Binds
@@ -17,12 +17,12 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAppListRepository(
-        impl: AppListMockRepositoryImpl
+        impl: AppListRepositoryImpl
     ): AppListRepository
 
     @Binds
     @Singleton
     abstract fun bindAppDetailsRepository(
-        impl: AppDetailsMockRepositoryImpl
+        impl: AppDetailsRepositoryImpl
     ): AppDetailsRepository
 }

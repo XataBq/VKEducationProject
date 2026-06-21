@@ -1,6 +1,6 @@
-package com.example.firstandroidapp.data.appdetails
+package com.example.firstandroidapp.data.mapper
 
-import com.example.firstandroidapp.data.mapper.CategoryMapper
+import com.example.firstandroidapp.data.remote.dto.AppDetailsDto
 import com.example.firstandroidapp.domain.appdetails.AppDetails
 import javax.inject.Inject
 

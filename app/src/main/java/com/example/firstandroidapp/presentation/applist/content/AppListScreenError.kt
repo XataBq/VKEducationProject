@@ -32,7 +32,7 @@ fun AppListScreenError(
         Text(text = message)
         Spacer(modifier = Modifier.height(12.dp))
         Button(onClick = onRetryClick) {
-            Text(stringResource(R.string.app_list_retry_loading))
+            Text(stringResource(R.string.retry_loading))
         }
     }
 }
