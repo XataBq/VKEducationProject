@@ -1,12 +1,11 @@
-package com.example.firstandroidapp.domain.appdetails
+package com.example.firstandroidapp.data.appdetails
 
-import com.example.firstandroidapp.domain.Category
 
-data class AppDetails(
+data class AppDetailsDto (
     val id: String,
     val name: String,
     val developer: String,
-    val category: Category,
+    val category: String,
     val ageRating: Int,
     val size: Float,
     val iconUrl: String,

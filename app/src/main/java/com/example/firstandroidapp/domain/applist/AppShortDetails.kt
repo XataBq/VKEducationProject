@@ -1,6 +1,6 @@
 package com.example.firstandroidapp.domain.applist
 
-import com.example.firstandroidapp.domain.appdetails.Category
+import com.example.firstandroidapp.domain.Category
 
 data class AppShortDetails(
     val id: String,

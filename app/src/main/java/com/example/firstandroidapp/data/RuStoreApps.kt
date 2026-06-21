@@ -1,6 +1,6 @@
 package com.example.firstandroidapp.data
 
-import com.example.firstandroidapp.domain.appdetails.Category
+import com.example.firstandroidapp.domain.Category
 import com.example.firstandroidapp.domain.applist.AppShortDetails
 
 val apps = listOf(

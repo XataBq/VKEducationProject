@@ -21,19 +21,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.firstandroidapp.domain.appdetails.serialName
+import com.example.firstandroidapp.domain.serialName
 import com.example.firstandroidapp.domain.applist.AppShortDetails
 
 @Composable
 fun AppListItem(
     app: AppShortDetails,
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable(onClick = { onClick(app.id) })
             .padding(horizontal = 24.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

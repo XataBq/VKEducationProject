@@ -13,8 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.firstandroidapp.domain.Category
 import com.example.firstandroidapp.domain.appdetails.AppDetails
-import com.example.firstandroidapp.domain.appdetails.Category
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 
 @Composable
@@ -84,6 +84,7 @@ private fun Preview() {
         AppDetailsContent(
             content = AppDetailsState.Content(
                 appDetails = AppDetails(
+                    id = "dkkaj-12902-allsdw-pyobz",
                     name = "Гильдия Героев: Экшен ММО РПГ",
                     developer = "VK Play",
                     category = Category.GAME,

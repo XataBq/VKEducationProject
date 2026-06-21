@@ -1,4 +1,4 @@
-package com.example.firstandroidapp.domain.appdetails
+package com.example.firstandroidapp.domain
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

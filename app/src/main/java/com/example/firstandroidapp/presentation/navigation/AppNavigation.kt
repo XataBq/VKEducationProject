@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.firstandroidapp.presentation.appdetails.AppDetailsScreen
 import com.example.firstandroidapp.presentation.applist.AppListRoute
 
@@ -23,8 +25,8 @@ fun AppNavigation(
     ) {
         composable(Screen.ListOfApps.route) {
             AppListRoute(
-                onAppClick = {
-                    navController.navigate(Screen.AppDetails.route) {
+                onAppClick = { appId ->
+                    navController.navigate(Screen.AppDetails.createRoute(appId)) {
                         launchSingleTop = true
                     }
                 }
@@ -33,10 +35,8 @@ fun AppNavigation(
 
         composable(
             Screen.AppDetails.route,
-//            Now don't need, but later may be useful
-//            arguments = listOf(navArgument("id") { type = NavType.StringType })
+            arguments = listOf(navArgument(Screen.AppDetails.APP_ID) { type = NavType.StringType })
         ) {
-            //Detailed app screen is everywhere the same yet
             AppDetailsScreen(
                 modifier = Modifier
                     .fillMaxSize()

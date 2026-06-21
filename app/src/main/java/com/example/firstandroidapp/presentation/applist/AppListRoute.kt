@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun AppListRoute(
-    onAppClick: () -> Unit,
+    onAppClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: AppListViewModel = viewModel()
 ) {
@@ -45,6 +45,7 @@ fun AppListRoute(
         snackbarHostState = snackbarHostState,
         onLogoClick = { viewModel.onLogoClick()},
         onAppClick = onAppClick,
+        onLoadMore = viewModel::loadNextPage,
         onRetryClick = viewModel::loadApps,
         modifier = modifier
     )
