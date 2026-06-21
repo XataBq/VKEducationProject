@@ -16,7 +16,8 @@ class AppDetailsEntityMapper @Inject constructor() {
         size = domain.size,
         iconUrl = domain.iconUrl,
         screenshots = domain.screenshotUrlList,
-        description = domain.description
+        description = domain.description,
+        isInWishlist = false
     )
 
     fun toDomain(entity: AppDetailsEntity): AppDetails = AppDetails(
@@ -28,6 +29,7 @@ class AppDetailsEntityMapper @Inject constructor() {
         size = entity.size,
         iconUrl = entity.iconUrl,
         screenshotUrlList = entity.screenshots,
-        description = entity.description
+        description = entity.description,
+        isInWishlist = entity.isInWishlist
     )
 }

@@ -9,6 +9,8 @@ import com.example.firstandroidapp.domain.appdetails.AppDetails
 import com.example.firstandroidapp.domain.appdetails.AppDetailsRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -38,11 +40,22 @@ class AppDetailsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun refreshAppDetails(id: String) {
+        val local = dao.getAppDetails(id).firstOrNull()
+
         val dto = api.getAppDetails(id)
         val domain = dtoMapper.map(dto)
-        val entity = entityMapper.toEntity(domain)
+        val entity = entityMapper.toEntity(domain).copy(
+            isInWishlist = local?.isInWishlist ?: false
+        )
         withContext(ioDispatcher) {
             dao.insertAppDetails(entity)
+        }
+    }
+
+    override suspend fun toggleWishlist(id: String) {
+        val currentEntity = dao.getAppDetails(id).first()
+        currentEntity?.let {
+            dao.updateWishListStatus(id, !it.isInWishlist)
         }
     }
 }
