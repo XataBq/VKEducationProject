@@ -1,11 +1,10 @@
 package com.example.firstandroidapp.data.applist
 
-import com.example.firstandroidapp.data.appsDto
 import com.example.firstandroidapp.domain.applist.AppListRepository
 import com.example.firstandroidapp.domain.applist.AppShortDetails
-import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class AppListMockRepositoryImpl(
+class AppListMockRepositoryImpl @Inject constructor(
     private val mapper: AppShortDetailsMapper,
     private val api: AppListApi,
 ) : AppListRepository{

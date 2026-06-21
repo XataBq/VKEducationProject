@@ -18,12 +18,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.domain.applist.AppShortDetails
 import com.example.firstandroidapp.presentation.applist.components.AppListItem
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 //AppListScreen content on success
 @Composable
 fun AppListScreenSuccess(
     appList: List<AppShortDetails>,
     isLoadingMore: Boolean,
+    endReached: Boolean,
     onAppClick: (String) -> Unit,
     onLoadMore: () -> Unit,
     modifier: Modifier = Modifier
@@ -32,24 +34,29 @@ fun AppListScreenSuccess(
         LazyListState()
     }
 
-    LaunchedEffect(listState, appList) {
+    LaunchedEffect(listState, appList.size, isLoadingMore, endReached) {
         snapshotFlow {
             listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
-        }.collect { lastVisibleIndex ->
-            if (lastVisibleIndex == null) return@collect
-
-            val shouldLoadMore = lastVisibleIndex >= appList.lastIndex - 2
-            if (shouldLoadMore) {
-                onLoadMore()
-            }
         }
+            .distinctUntilChanged()
+            .collect { lastVisibleIndex ->
+                if (lastVisibleIndex == null) return@collect
+                if (isLoadingMore || endReached) return@collect
+
+                val shouldLoadMore = lastVisibleIndex >= appList.lastIndex - 2
+                if (shouldLoadMore) {
+                    onLoadMore()
+                }
+            }
     }
 
     LazyColumn(
         state = listState,
         modifier = modifier
     ) {
-        items(appList) { app ->
+        items(
+            items = appList,
+            key = { app -> app.id }) { app ->
             AppListItem(
                 app = app,
                 onClick = onAppClick

@@ -1,8 +1,9 @@
 package com.example.firstandroidapp.data.appdetails
 
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class AppDetailsApi {
+class AppDetailsApi @Inject constructor(){
     suspend fun get(id: String): AppDetailsDto {
         delay(2000L)
         return AppDetailsDto(

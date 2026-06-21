@@ -3,24 +3,18 @@ package com.example.firstandroidapp.presentation.applist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstandroidapp.R
-import com.example.firstandroidapp.data.applist.AppListApi
-import com.example.firstandroidapp.data.applist.AppListMockRepositoryImpl
-import com.example.firstandroidapp.data.applist.AppShortDetailsMapper
-import com.example.firstandroidapp.data.mapper.CategoryMapper
 import com.example.firstandroidapp.domain.applist.AppListRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AppListViewModel(
-    private val appListRepository: AppListRepository = AppListMockRepositoryImpl(
-        mapper = AppShortDetailsMapper(
-            categoryMapper = CategoryMapper()
-        ),
-        api = AppListApi()
-    )
+@HiltViewModel
+class AppListViewModel @Inject constructor(
+    private val appListRepository: AppListRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<AppListUiState>(AppListUiState.Loading)
@@ -63,13 +57,13 @@ class AppListViewModel(
         }
     }
 
-    fun loadNextPage(){
+    fun loadNextPage() {
         val state = _uiState.value
         if (state !is AppListUiState.Success) return
         if (state.isLoadingMore || state.endReached) return
 
+        _uiState.value = state.copy(isLoadingMore = true)
         viewModelScope.launch {
-            _uiState.value = state.copy(isLoadingMore = true)
 
             runCatching {
                 appListRepository.get(

@@ -3,14 +3,9 @@ package com.example.firstandroidapp.presentation.appdetails
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firstandroidapp.data.appdetails.AppDetailsApi
-import com.example.firstandroidapp.data.appdetails.AppDetailsMapper
-import com.example.firstandroidapp.data.appdetails.AppDetailsMockRepositoryImpl
-import com.example.firstandroidapp.data.mapper.CategoryMapper
-import com.example.firstandroidapp.domain.Category
-import com.example.firstandroidapp.domain.appdetails.AppDetails
 import com.example.firstandroidapp.domain.appdetails.AppDetailsRepository
 import com.example.firstandroidapp.presentation.navigation.Screen
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.BUFFERED
 import kotlinx.coroutines.delay
@@ -19,18 +14,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 
-class AppDetailsViewModel(
+@HiltViewModel
+class AppDetailsViewModel @Inject constructor(
+    private val repository: AppDetailsRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-
-    private val appDetailsRepository: AppDetailsRepository = AppDetailsMockRepositoryImpl(
-        mapper = AppDetailsMapper(
-            categoryMapper = CategoryMapper()
-        ),
-        api = AppDetailsApi(),
-    )
 
     private val _state = MutableStateFlow<AppDetailsState>(AppDetailsState.Loading)
     val state = _state.asStateFlow()
@@ -71,7 +62,7 @@ class AppDetailsViewModel(
                 delay(2.seconds)
 
                 // В будущем заменим этот метод на вызов API.
-                val appDetails = appDetailsRepository.get(appId)
+                val appDetails = repository.get(appId)
 
                 _state.value = AppDetailsState.Content(
                     appDetails = appDetails,
