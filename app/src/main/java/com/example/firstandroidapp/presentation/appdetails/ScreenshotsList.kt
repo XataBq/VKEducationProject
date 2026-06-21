@@ -1,5 +1,6 @@
 package com.example.firstandroidapp.presentation.appdetails
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -23,30 +24,42 @@ import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
 
 @Composable
 fun ScreenshotsList(
-    screenshotUrlList: List<String>,
+    screenshotUrlList: List<String>?,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
+    val screenshots = screenshotUrlList.orEmpty()
+
     Column(modifier) {
         Text(
             text = stringResource(R.string.app_details_screenshots),
             modifier = Modifier.padding(contentPadding),
         )
         Spacer(Modifier.height(8.dp))
-        HorizontalPager(
-            modifier = Modifier.fillMaxWidth(),
-            contentPadding = contentPadding,
-            pageSpacing = 8.dp,
-            state = rememberPagerState { screenshotUrlList.size },
-        ) { index ->
-            AsyncImage(
-                model = screenshotUrlList[index],
-                contentDescription = null,
+        if (screenshots.isEmpty()) {
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(16f / 9f)
+                    .padding(contentPadding)
                     .clip(RoundedCornerShape(8.dp))
             )
+        } else {
+            HorizontalPager(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = contentPadding,
+                pageSpacing = 8.dp,
+                state = rememberPagerState { screenshots.size },
+            ) { index ->
+                AsyncImage(
+                    model = screenshots[index],
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16f / 9f)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+            }
         }
     }
 }

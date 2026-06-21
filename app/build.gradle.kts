@@ -40,7 +40,11 @@ android {
 }
 
 dependencies {
-    //Мне retrofit
+    //room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+    //retrofit
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
     //okhttp
