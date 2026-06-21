@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.firstandroidapp.R
+import com.example.firstandroidapp.domain.appdetails.AppDetails
 import com.example.firstandroidapp.domain.appdetails.Category
 import com.example.firstandroidapp.domain.appdetails.serialName
 import com.example.firstandroidapp.presentation.theme.FirstAndroidAppTheme
@@ -31,7 +32,7 @@ import kotlin.math.roundToInt
 
 @Composable
 fun AppDetailsHeader(
-    app: App,
+    appDetails: AppDetails,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -39,7 +40,7 @@ fun AppDetailsHeader(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         AsyncImage(
-            model = app.iconUrl,
+            model = appDetails.iconUrl,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -49,26 +50,26 @@ fun AppDetailsHeader(
         Spacer(Modifier.width(16.dp))
         Column {
             Text(
-                text = app.category.serialName(),
+                text = appDetails.category.serialName(),
                 color = MaterialTheme.colorScheme.secondary,
                 fontSize = 12.sp,
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = app.name,
+                text = appDetails.name,
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.headlineSmall,
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = app.developer,
+                text = appDetails.developer,
                 fontSize = 12.sp,
             )
             Spacer(Modifier.height(4.dp))
             Row {
                 Column(Modifier.width(IntrinsicSize.Max)) {
                     Text(
-                        text = "${app.ageRating}+",
+                        text = "${appDetails.ageRating}+",
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
                     )
@@ -77,7 +78,7 @@ fun AppDetailsHeader(
                 }
                 Spacer(Modifier.width(12.dp))
                 Column {
-                    Text(text = "${app.size.roundToInt()} MB")
+                    Text(text = "${appDetails.size.roundToInt()} MB")
                     Spacer(Modifier.height(4.dp))
                     Text(text = stringResource(R.string.app_details_size))
                 }
@@ -90,7 +91,7 @@ fun AppDetailsHeader(
 @Preview
 @Composable
 private fun Preview() {
-    val app = App(
+    val app = AppDetails(
         name = "Гильдия Героев: Экшен ММО РПГ",
         developer = "VK Play",
         category = Category.GAME,
@@ -107,6 +108,6 @@ private fun Preview() {
 
     )
     FirstAndroidAppTheme() {
-        AppDetailsHeader(app = app, modifier = Modifier.fillMaxWidth())
+        AppDetailsHeader(appDetails = app, modifier = Modifier.fillMaxWidth())
     }
 }

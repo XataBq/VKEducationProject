@@ -1,6 +1,7 @@
-package com.example.firstandroidapp.presentation.applist
+package com.example.firstandroidapp.presentation.applist.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,13 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.firstandroidapp.R
 
 @Composable
-fun AppListHeader() {
+fun AppListHeader(
+    onLogoClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(128.dp)
             .padding(top = 48.dp, bottom = 32.dp, start = 24.dp, end = 24.dp),
@@ -33,8 +38,11 @@ fun AppListHeader() {
 
         Image(
             painter = painterResource(R.drawable.logo),
-            contentDescription = "Menu",
-            modifier = Modifier.width(150.dp).height(48.dp),
+            contentDescription = stringResource(R.string.logo_ru_store),
+            modifier = Modifier
+                .width(150.dp)
+                .height(48.dp)
+                .clickable{ onLogoClick() },
             contentScale = ContentScale.Fit
         )
         Spacer(modifier = Modifier.weight(1F))
@@ -50,7 +58,7 @@ fun AppListHeader() {
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_menu),
-                contentDescription = "Menu"
+                contentDescription = stringResource(R.string.app_list_menu)
             )
         }
     }

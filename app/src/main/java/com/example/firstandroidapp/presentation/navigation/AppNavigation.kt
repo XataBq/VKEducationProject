@@ -8,20 +8,23 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.firstandroidapp.presentation.appdetails.AppDetailsScreen
-import com.example.firstandroidapp.presentation.applist.AppListScreen
+import com.example.firstandroidapp.presentation.applist.AppListRoute
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(
+    modifier: Modifier = Modifier
+) {
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = Screen.ListOfApps.route
+        startDestination = Screen.ListOfApps.route,
+        modifier = modifier
     ) {
         composable(Screen.ListOfApps.route) {
-            AppListScreen(
-                navigateAppDetails = {
-                    navController.navigate(Screen.AppDetails.route){
+            AppListRoute(
+                onAppClick = {
+                    navController.navigate(Screen.AppDetails.route) {
                         launchSingleTop = true
                     }
                 }
@@ -35,10 +38,12 @@ fun AppNavigation() {
         ) {
             //Detailed app screen is everywhere the same yet
             AppDetailsScreen(
-                modifier = Modifier.fillMaxSize().safeDrawingPadding(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .safeDrawingPadding(),
                 onBackClick = {
                     //Чтобы не было blank screen
-                    if (!navController.popBackStack()){
+                    if (!navController.popBackStack()) {
                         navController.navigate(Screen.ListOfApps.route) {
                             launchSingleTop = true
                         }
